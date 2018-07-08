@@ -22,7 +22,5 @@ namespace Domain.Abstract
 
         Task<TEntity> DeleteEntityAsync(int itemId);
 
-
-
     }
 }

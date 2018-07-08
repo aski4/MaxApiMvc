@@ -12,7 +12,7 @@ namespace Domain.Concrete
 {
     public class EmailSettings
     {
-        public string MailToAddress = "aski4two@gmail.com";
+        public string MailToAddress = "";
         public string MailFromAddress = "MaxSushiVin@gmail.com";
         public bool UseSsl = true;
         public string UserName = "MaxSushiVin@gmail.com";

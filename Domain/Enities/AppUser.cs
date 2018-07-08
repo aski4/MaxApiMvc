@@ -10,5 +10,6 @@ namespace Domain.Enities
     public class AppUser : IdentityUser
     {
         public virtual ClientProfile ClientProfile { get; set; }
+        
     }
 }
