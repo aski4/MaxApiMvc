@@ -1,0 +1,27 @@
+﻿<div class="navbar-right" style="margin-right:15px;">
+    <button class="btn btn-default btn-xs navbar-btn"
+            data-bind="click: setView.bind($data, 'checkout'), enable: customerModel.cartCount() > 0">
+        Checkout
+    </button>
+</div>
+
+<div class="navbar-text navbar-right">
+    <div class="pull-left" style="margin-right:15px;">
+        @if (!@User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("SignIn", "Login", "Account")
+        }
+        else
+        {
+            <span class="pull-left" style="margin-right:15px;">
+                @Html.ActionLink(User.Identity.Name, "Index", "Account")
+            </span>
+            @Html.ActionLink("SignOut", "LogOut", "Account")
+        }
+
+    </div>
+    <b>Your cart:</b>
+    <span data-bind="text: customerModel.cartCount()"></span> item(s),
+    <span data-bind="text: '$' + customerModel.cartTotal().toFixed(2)" style="margin-right:15px;"></span>
+</div>
+     

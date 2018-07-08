@@ -1,0 +1,58 @@
+﻿@section Scripts{
+    <script src="~/Scripts/storeAdminModel.js"></script>
+    <script src="~/Scripts/storeAdminController.js"></script>
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SpaLayaoutPage1.cshtml";
+}
+<div class="navbar">
+    NAVBAR
+</div>
+
+<div class="alert alert-danger text-center"
+     data-bind="visible: model.gotError(), text: model.error()">
+</div>
+
+<div>
+    @if (User.IsInRole("admin"))
+    {
+        <div data-bind="visible: adminModel.secondView() == 'start'"> OP OP</div>
+        <div data-bind="visible: adminModel.secondView() == 'start2'"> OP2 OP2</div>
+        <div data-bind="visible: adminModel.currentView() == 'start', enable: getProducts()">
+            <div id="categories" class="col-xs-3">
+                <button class="btn btn-block btn-default btn-lg"
+                        data-bind="click: setListMode.bind($data, 'products')">
+                    Products
+                </button>
+                <button class="btn btn-primary"
+                        data-bind="click: setView2.bind($data, adminModel.sequenceMy())">
+                    Cancel
+                </button>
+                <button class="btn btn-primary"
+                        data-bind="click: setListMode.bind($data, 'userList')">
+                    Users
+                </button>
+
+            </div>
+         </div>
+        <div class="col-xs-8" data-bind="visible: adminModel.listMode() == 'products'">
+            @Html.Partial("AccountProductList")
+        </div>
+
+        <div class="col-xs-8" data-bind="visible: adminModel.listMode() == 'addProduct'">
+            @Html.Partial("AccountProductAdd")
+        </div>
+        <div class="col-xs-8" data-bind="visible: adminModel.listMode() == 'userList'">
+            @Html.Partial("AccountUserList")
+        </div>
+
+
+    }
+    @if (User.IsInRole("user"))
+    {
+        <label>USER</label>
+    }
+
+</div>
